@@ -8,8 +8,6 @@ import TitleCards from '../../components/TitleCards/TitleCards';
 import Footer from '../../components/Footer/Footer';
 
 
-
-
 const Home = () => {
   return (
     <div className="home">
@@ -37,9 +35,9 @@ const Home = () => {
         </div>
       </div>
       <div className="more-cards">
-        <TitleCards title={"Top Rated"} category={"top_rated"} />
         <TitleCards title={"Popular"} category={"popular"} />
         <TitleCards title={"Upcoming"} category={"upcoming"} />
+        <TitleCards title={"Top Rated"} category={"top_rated"} />
       </div>
       <Footer />
     </div>
