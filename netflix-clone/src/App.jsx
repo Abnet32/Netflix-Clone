@@ -1,8 +1,10 @@
-import './App.css'
+import './index.css'
+import Home from './pages/Home/Home';
 const App = () => {
   return (
     <div>
-      <h1>Netflix Clone</h1>
+      <Home />
+      
     </div>
   );
 }
