@@ -1,7 +1,7 @@
 .notfound {
   position: relative;
   min-height: 100vh;
-  background: #000; /* Black Netflix theme */
+  background: #000; 
   color: #fff;
   overflow: hidden;
   display: flex;
@@ -20,8 +20,7 @@
 .error-code {
   font-size: 10rem;
   font-weight: 900;
-  color: #e50914; /* Netflix red */
-  /* Remove excessive blur, keep subtle glow */
+  color: #e50914; 
   text-shadow: 0 0 10px #e50914, 0 0 20px #ff1a1a;
   animation: float 3s ease-in-out infinite;
 }

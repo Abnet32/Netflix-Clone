@@ -12,7 +12,7 @@ export default function NotFound404() {
           name changed, or is temporarily unavailable.
         </p>
         <a href="/" className="btn btn-red btn-lg mt-3">
-          Go Back Home
+          Netflix Home
         </a>
       </div>
 
