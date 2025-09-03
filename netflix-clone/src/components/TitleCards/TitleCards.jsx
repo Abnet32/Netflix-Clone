@@ -55,7 +55,9 @@ const TitleCards = ({ title, category }) => {
                 src={`https://image.tmdb.org/t/p/w500/` + card.backdrop_path}
                 alt={card.original_title}
               />
-              <p>{card.original_title}</p>
+              <div className="card-title">
+                <p>{card.original_title}</p>
+              </div>{" "}
             </Link>
           );
         })}

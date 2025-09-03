@@ -6,10 +6,8 @@ import play_icon from "../../assets/play_icon.png";
 import info_icon from "../../assets/info_icon.png";
 import TitleCards from "../../components/TitleCards/TitleCards";
 import Footer from "../../components/Footer/Footer";
-import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const navigate = useNavigate();
 
   return (
     <div className="home">
@@ -26,8 +24,13 @@ const Home = () => {
           <div className="hero-btns">
             <button
               className="btn"
-              onClick={() => navigate("/player/tv/74823")}
-            >
+              onClick={() =>
+                window.open(
+                  `https://www.youtube.com/embed/g3GoD22e5gM?si=ay6974bB5VT8ScxY`,
+                  "_blank"
+                )
+              }
+            >              
               <img src={play_icon} alt="play_icon" />
               Play
             </button>

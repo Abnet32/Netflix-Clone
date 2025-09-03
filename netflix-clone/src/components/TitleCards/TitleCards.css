@@ -101,21 +101,26 @@
 .card-list::-webkit-scrollbar {
   display: none;
 }
-.card-list img {
+.card-list .card {
+  display: flex;
+  flex-direction: column; /* image on top, title below */
+  text-decoration: none;
+  color: #fff;
+}
+
+.card-list .card img {
   width: 240px;
   border-radius: 4px;
   cursor: pointer;
 }
-.card-list .card {
-  position: relative;
+
+.card-list .card-title {
+  margin-top: 7px; /* space between image and title */
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
 }
-.card-list .card p {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  text-decoration: none;
-  color: #fff;
-}
+
 @media (max-width: 800px) {
   .title-cards {
     margin-top: 20px;
