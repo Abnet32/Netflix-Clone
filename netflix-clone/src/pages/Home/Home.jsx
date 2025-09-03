@@ -1,14 +1,16 @@
-import Navbar from '../../components/Navbar/Navbar'
-import './Home.css'
-import hero_banner from '../../assets/hero_banner.jpg'
+import Navbar from "../../components/Navbar/Navbar";
+import "./Home.css";
+import hero_banner from "../../assets/cukur.webp";
 import hero_title from "../../assets/hero_title.png";
 import play_icon from "../../assets/play_icon.png";
 import info_icon from "../../assets/info_icon.png";
-import TitleCards from '../../components/TitleCards/TitleCards';
-import Footer from '../../components/Footer/Footer';
-
+import TitleCards from "../../components/TitleCards/TitleCards";
+import Footer from "../../components/Footer/Footer";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="home">
       <Navbar />
@@ -17,12 +19,15 @@ const Home = () => {
         <div className="hero-caption">
           <img src={hero_title} alt="hero_title" className="caption-img" />
           <p>
-            Discovering his ties to a secret ancient order, a young man living
-            in modern Istanbul embarks on a quest to save the city from an
-            immortal enemy.
+            When a mafia family named Koçovars are in danger of losing control
+            of their neighborhood, “The Pit,” their youngest son must come back
+            home, a place he could never truly escape.
           </p>
           <div className="hero-btns">
-            <button className="btn">
+            <button
+              className="btn"
+              onClick={() => navigate("/player/tv/74823")}
+            >
               <img src={play_icon} alt="play_icon" />
               Play
             </button>
@@ -42,6 +47,6 @@ const Home = () => {
       <Footer />
     </div>
   );
-}
+};
 
-export default Home
+export default Home;
