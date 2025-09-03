@@ -25,4 +25,7 @@ A **Netflix-style movie web app** built with **React**, **React Router**, **TMDB
 
 ---
 
+✨ Built with 💙 using Markdown. Let's connect and create awesome things together! ✨
+
+
 
