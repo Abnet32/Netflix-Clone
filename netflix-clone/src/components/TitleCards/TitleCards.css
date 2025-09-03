@@ -1,5 +1,4 @@
-/* Section Title */
-.title-cards {
+/* .title-cards {
   margin-top: 50px;
   margin-bottom: 30px;
 }
@@ -11,7 +10,6 @@
   color: #fff;
 }
 
-/* Card List Container */
 .card-list {
   display: flex;
   gap: 15px;
@@ -24,30 +22,27 @@
   display: none;
 }
 
-/* Individual Card */
 .card-list .card {
   position: relative;
   flex: 0 0 auto;
-  width: 200px; /* poster width */
+  width: 200px; 
   cursor: pointer;
   transition: transform 0.3s ease;
-}
+} */
 
-.card-list .card:hover {
+/* .card-list .card:hover {
   transform: scale(1.1);
   z-index: 2;
-}
-
-/* Poster Image */
+} */
+/* 
 .card-list img {
   width: 100%;
-  height: 300px; /* poster height */
+  height: 300px; 
   object-fit: cover;
   border-radius: 10px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7);
 }
 
-/* Card Label/Text */
 .card-list .card p {
   position: absolute;
   bottom: 10px;
@@ -58,7 +53,7 @@
   background: rgba(0, 0, 0, 0.65);
   padding: 4px 8px;
   border-radius: 6px;
-}
+} */
 
 /* Responsive Adjustments
 @media (max-width: 1024px) {
@@ -91,7 +86,7 @@
   }
 } */
 
-/* 
+ 
 .title-cards {
   margin-top: 50px;
   margin-bottom: 30px;
@@ -119,5 +114,8 @@
   position: absolute;
   bottom: 10px;
   right: 10px;
+  text-decoration: none;
+  color: #fff;
 }
- */
+
+ 
