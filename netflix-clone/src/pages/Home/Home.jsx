@@ -1,6 +1,6 @@
 import Navbar from "../../components/Navbar/Navbar";
 import "./Home.css";
-import hero_banner from "../../assets/cukur.webp";
+import hero_banner from "../../assets/cukurr.webp";
 import hero_title from "../../assets/hero_title.png";
 import play_icon from "../../assets/play_icon.png";
 import info_icon from "../../assets/info_icon.png";
