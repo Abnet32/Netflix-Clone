@@ -113,7 +113,12 @@
   border-radius: 4px;
   cursor: pointer;
 }
-
+.card-list img:hover {
+  margin: 10px;
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  z-index: 2; /* bring hovered card above others */
+}
 .card-list .card-title {
   margin-top: 7px; /* space between image and title */
   text-align: center;

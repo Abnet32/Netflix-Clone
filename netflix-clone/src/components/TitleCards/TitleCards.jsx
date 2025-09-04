@@ -1,7 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import "./TitleCards.css";
 import { Link } from "react-router-dom";
-// import cards_data from "../../assets/cards/Cards_data";
 
 const TitleCards = ({ title, category }) => {
   const [apiData, setApiData] = useState([]);
@@ -17,10 +16,10 @@ const TitleCards = ({ title, category }) => {
     },
   };
 
-  const handleWheel = (event) => {3
-    event.preventDefault();
-    cardsRef.current.scrollLeft += event.deltaY; // ✅ fixed typo
-  };
+  // const handleWheel = (event) => {3
+  //   event.preventDefault();
+  //   cardsRef.current.scrollLeft += event.deltaY; // ✅ fixed typo
+  // };
 
   useEffect(() => {
     fetch(
@@ -31,17 +30,17 @@ const TitleCards = ({ title, category }) => {
       .then((res) => setApiData(res.results))
       .catch((err) => console.error(err));
 
-    const container = cardsRef.current;
-    if (container) {
-      container.addEventListener("wheel", handleWheel, { passive: false });
-    }
+    // const container = cardsRef.current;
+    // if (container) {
+    //   container.addEventListener("wheel", handleWheel, { passive: false });
+    // }
 
     // ✅ cleanup
-    return () => {
-      if (container) {
-        container.removeEventListener("wheel", handleWheel);
-      }
-    };
+    // return () => {
+    //   if (container) {
+    //     container.removeEventListener("wheel", handleWheel);
+    //   }
+    // };
   }, []);
 
   return (
