@@ -2,8 +2,8 @@ import Navbar from "../../components/Navbar/Navbar";
 import "./Home.css";
 import hero_banner from "../../assets/cukurr.webp";
 import hero_title from "../../assets/hero_title.png";
-import play_icon from "../../assets/play_icon.png";
-import info_icon from "../../assets/info_icon.png";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import InfoOutlineIcon from "@mui/icons-material/InfoOutline";
 import TitleCards from "../../components/TitleCards/TitleCards";
 import Footer from "../../components/Footer/Footer";
 
@@ -31,11 +31,11 @@ const Home = () => {
                 )
               }
             >              
-              <img src={play_icon} alt="play_icon" />
+              <PlayArrowIcon />
               Play
             </button>
             <button className="btn dark-btn">
-              <img src={info_icon} alt="info_icon" />
+              <InfoOutlineIcon />
               More Info
             </button>
           </div>

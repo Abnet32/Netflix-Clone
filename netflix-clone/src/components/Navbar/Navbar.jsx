@@ -1,9 +1,9 @@
 import "./Navbar.css";
 import logo from "../../assets/logo.png";
-import search_icon from "../../assets/search_icon.svg";
-import bell_icon from "../../assets/bell_icon.svg";
-import profile_img from "../../assets/profile_img.png";
-import caret_icon from "../../assets/caret_icon.svg";
+import SearchIcon from "@mui/icons-material/Search";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { useEffect, useRef } from "react";
 import { logout } from "../../firebase";
 
@@ -37,14 +37,20 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-right">
-        <img src={search_icon} alt="search_icon" className="icons" />
-        <p>Children</p>
-        <img src={bell_icon} alt="bell_icon" className="icons" />
+        <SearchIcon />
+        <p>Kids</p>
+        <NotificationsIcon />
         <div className="navbar-profile">
-          <img src={profile_img} alt="profile_img" className="profile" />
-          <img src={caret_icon} alt="caret_icon" />
+          <AccountBoxIcon />
+          <ArrowDropDownIcon />
           <div className="dropdown">
-            <p onClick={()=>{logout()}}>Sign Out of Netflix</p>
+            <p
+              onClick={() => {
+                logout();
+              }}
+            >
+              Sign Out of Netflix
+            </p>
           </div>
         </div>
       </div>
