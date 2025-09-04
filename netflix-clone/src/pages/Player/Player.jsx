@@ -1,5 +1,5 @@
 import "./Player.css";
-import back_arrow_icon from "../../assets/back_arrow_icon.png";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -28,27 +28,36 @@ const Player = () => {
       options
     )
       .then((res) => res.json())
-      .then((res) => setApiData(res.results[0]))
+      .then((res) => {
+        const trailer =
+          res.results.find(
+            (vid) => vid.type === "Trailer" && vid.site === "YouTube"
+          ) || res.results[0];
+        setApiData(trailer || {});
+      })
       .catch((err) => console.error(err));
-  }, []);
+  }, [id]);
+
 
   return (
     <div className="player">
-      <img
-        src={back_arrow_icon}
-        alt="back_arrow_icon"
+      <ArrowBackIcon
+        className="img"
         onClick={() => {
           navigate(-2);
         }}
       />
+
       <iframe
         width="90%"
         height="90%"
-        src={`https://www.youtube.com/embed/${apiDtata.key}`}
+        src={`https://www.youtube.com/embed/${apiDtata.key}?autoplay=1`}
         title="trailer"
         frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       ></iframe>
+
       <div className="player-info">
         {/* <p>{apiDtata.published_at}</p> */}
         <p>

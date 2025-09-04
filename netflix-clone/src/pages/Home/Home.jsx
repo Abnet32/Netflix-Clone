@@ -1,52 +1,122 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import "./Home.css";
-import hero_banner from "../../assets/cukurr.webp";
-import hero_title from "../../assets/hero_title.png";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import InfoOutlineIcon from "@mui/icons-material/InfoOutline";
 import TitleCards from "../../components/TitleCards/TitleCards";
 import Footer from "../../components/Footer/Footer";
 
+const API_KEY =  import.meta.env.VITE_API_KEY; // 🔑 from .env
+const BASE_URL = import.meta.env.VITE_BASE_URL; 
+const IMAGE_BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL; 
+const POSTER_BASE_URL = import.meta.env.VITE_POSTER_BASE_URL; 
+
 const Home = () => {
+  const [heroMovie, setHeroMovie] = useState(null);
+  const [showInfo, setShowInfo] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchHeroMovie = async () => {
+      try {
+        const res = await fetch(
+          `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
+        );
+        const data = await res.json();
+
+        // Pick random movie
+        const randomIndex = Math.floor(Math.random() * data.results.length);
+        const movie = data.results[randomIndex];
+        setHeroMovie(movie);
+      } catch (error) {
+        console.error("Error fetching hero movie:", error);
+      }
+    };
+
+    fetchHeroMovie();
+  }, []);
 
   return (
     <div className="home">
       <Navbar />
+
       <div className="hero">
-        <img src={hero_banner} alt="hero_banner" className="banner-img" />
-        <div className="hero-caption">
-          <img src={hero_title} alt="hero_title" className="caption-img" />
-          <p>
-            When a mafia family named Koçovars are in danger of losing control
-            of their neighborhood, “The Pit,” their youngest son must come back
-            home, a place he could never truly escape.
-          </p>
-          <div className="hero-btns">
-            <button
-              className="btn"
-              onClick={() =>
-                window.open(
-                  `https://www.youtube.com/embed/g3GoD22e5gM?si=ay6974bB5VT8ScxY`,
-                  "_blank"
-                )
-              }
-            >              
-              <PlayArrowIcon />
-              Play
-            </button>
-            <button className="btn dark-btn">
-              <InfoOutlineIcon />
-              More Info
-            </button>
-          </div>
-          <TitleCards title={"Now Playing"} category={"now_playing"} />
-        </div>
+        {heroMovie && (
+          <>
+            <img
+              src={`${IMAGE_BASE_URL}${heroMovie.backdrop_path}`}
+              alt={heroMovie.title}
+              className="banner-img"
+            />
+            <div className="hero-caption">
+              <h1 className="caption-title">{heroMovie.title}</h1>
+              <p>{heroMovie.overview}</p>
+              <div className="hero-btns">
+                <button
+                  className="btn"
+                  onClick={() => navigate(`/player/${heroMovie.id}`)}
+                >
+                  <PlayArrowIcon />
+                  Play 
+                </button>
+
+                <button
+                  className="btn dark-btn"
+                  onClick={() => setShowInfo(true)}
+                >
+                  <InfoOutlineIcon />
+                  More Info
+                </button>
+              </div>
+              <TitleCards title={"Now Playing"} category={"now_playing"} />
+            </div>
+          </>
+        )}
       </div>
+
+      {/* Info Modal */}
+      {showInfo && heroMovie && (
+        <div className="movie-modal">
+          <div className="movie-modal-content">
+            <span className="close-btn" onClick={() => setShowInfo(false)}>
+              &times;
+            </span>
+            <img
+              src={`${POSTER_BASE_URL}${heroMovie.poster_path}`}
+              alt={heroMovie.title}
+              className="modal-poster"
+            />
+            <div className="modal-details">
+              <h2>{heroMovie.title}</h2>
+              <p>
+                <strong>Release Date:</strong>{" "}
+                {heroMovie.release_date
+                  ? new Date(heroMovie.release_date).toLocaleDateString(
+                      "en-US",
+                      {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      }
+                    )
+                  : ""}
+              </p>
+              <p>
+                <strong>Rating:</strong> ⭐ {heroMovie.vote_average}/10
+              </p>
+              <p>{heroMovie.overview}</p>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="more-cards">
         <TitleCards title={"Popular"} category={"popular"} />
         <TitleCards title={"Upcoming"} category={"upcoming"} />
         <TitleCards title={"Top Rated"} category={"top_rated"} />
       </div>
+
       <Footer />
     </div>
   );
