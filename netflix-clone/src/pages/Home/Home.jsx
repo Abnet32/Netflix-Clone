@@ -6,11 +6,10 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import InfoOutlineIcon from "@mui/icons-material/InfoOutline";
 import TitleCards from "../../components/TitleCards/TitleCards";
 import Footer from "../../components/Footer/Footer";
+import axiosInstance from "../../util/axios"; // 👈 import axios instance
 
-const API_KEY =  import.meta.env.VITE_API_KEY; // 🔑 from .env
-const BASE_URL = import.meta.env.VITE_BASE_URL; 
-const IMAGE_BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL; 
-const POSTER_BASE_URL = import.meta.env.VITE_POSTER_BASE_URL; 
+const IMAGE_BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL;
+const POSTER_BASE_URL = import.meta.env.VITE_POSTER_BASE_URL;
 
 const Home = () => {
   const [heroMovie, setHeroMovie] = useState(null);
@@ -20,10 +19,11 @@ const Home = () => {
   useEffect(() => {
     const fetchHeroMovie = async () => {
       try {
-        const res = await fetch(
-          `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
+        // ✅ use axios instead of fetch
+        const res = await axiosInstance.get(
+          `/movie/popular?language=en-US&page=1`
         );
-        const data = await res.json();
+        const data = res.data;
 
         // Pick random movie
         const randomIndex = Math.floor(Math.random() * data.results.length);
@@ -58,7 +58,7 @@ const Home = () => {
                   onClick={() => navigate(`/player/${heroMovie.id}`)}
                 >
                   <PlayArrowIcon />
-                  Play 
+                  Play
                 </button>
 
                 <button

@@ -1,4 +1,3 @@
-import React from "react";
 import "./NotFound404.css";
 
 export default function NotFound404() {
