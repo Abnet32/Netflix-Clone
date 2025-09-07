@@ -6,7 +6,7 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import InfoOutlineIcon from "@mui/icons-material/InfoOutline";
 import TitleCards from "../../components/TitleCards/TitleCards";
 import Footer from "../../components/Footer/Footer";
-import axiosInstance from "../../util/axios"; // 👈 import axios instance
+import axiosInstance from "../../util/axios"; //
 
 const IMAGE_BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL;
 const POSTER_BASE_URL = import.meta.env.VITE_POSTER_BASE_URL;
@@ -19,13 +19,11 @@ const Home = () => {
   useEffect(() => {
     const fetchHeroMovie = async () => {
       try {
-        // ✅ use axios instead of fetch
         const res = await axiosInstance.get(
           `/movie/popular?language=en-US&page=1`
         );
         const data = res.data;
 
-        // Pick random movie
         const randomIndex = Math.floor(Math.random() * data.results.length);
         const movie = data.results[randomIndex];
         setHeroMovie(movie);
@@ -75,7 +73,6 @@ const Home = () => {
         )}
       </div>
 
-      {/* Info Modal */}
       {showInfo && heroMovie && (
         <div className="movie-modal">
           <div className="movie-modal-content">

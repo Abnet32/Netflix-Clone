@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import "./TitleCards.css";
 import { Link } from "react-router-dom";
-import axiosInstance from "../../util/axios"; //
+import axiosInstance from "../../util/axios"; 
 
 const TitleCards = ({ title, category }) => {
   const [apiData, setApiData] = useState([]);
