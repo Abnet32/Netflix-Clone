@@ -37,6 +37,7 @@ const TitleCards = ({ title, category }) => {
     //       container.removeEventListener("wheel", handleWheel);
     //     }
     //   };
+
   }, [category]);
 
   return (

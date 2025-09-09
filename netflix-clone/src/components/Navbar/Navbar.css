@@ -35,14 +35,6 @@
   align-items: center;
   cursor: pointer;
 }
-.navbar-right .icons {
-  width: 20px;
-  cursor: pointer;
-}
-.navbar-right .profile {
-  border-radius: 4px;
-  width: 35px;
-}
 .navbar-profile {
   display: flex;
   gap: 10px;
